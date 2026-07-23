@@ -16,7 +16,7 @@ export const DefaultGlobalConfig: GlobalConfig = {
  *
  * @example
  * ```ts
- * import { provideToastr } from 'ngx-toastr';
+ * import { provideToastr } from '@openng/ngx-toastr';
  *
  * bootstrap(AppComponent, {
  *   providers: [

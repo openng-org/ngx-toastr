@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Toast } from 'ngx-toastr';
+import { Toast } from '@openng/ngx-toastr';
 
 @Component({
   selector: '[bootstrap-toast-component]',

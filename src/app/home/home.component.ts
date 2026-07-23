@@ -1,5 +1,5 @@
 import { Component, VERSION, ChangeDetectionStrategy, inject, viewChildren } from '@angular/core';
-import { GlobalConfig, ToastrService, ToastContainerDirective } from 'ngx-toastr';
+import { GlobalConfig, ToastrService, ToastContainerDirective } from '@openng/ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { ToastManagerService } from '../toast-manager.service';
 

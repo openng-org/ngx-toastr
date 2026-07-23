@@ -6,7 +6,7 @@ import {
   type ActiveToast,
   type GlobalConfig,
   type IndividualConfig,
-} from 'ngx-toastr';
+} from '@openng/ngx-toastr';
 import { BootstrapToast } from './bootstrap-toast/bootstrap-toast.component';
 import { NotyfToast } from './notyf-toast/notyf-toast.component';
 import { PinkToast } from './pink-toast/pink-toast.component';

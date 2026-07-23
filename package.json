@@ -17,7 +17,7 @@
   "packageManager": "npm@11.7.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scttcper/ngx-toastr"
+    "url": "https://github.com/openng-org/ngx-toastr"
   },
   "license": "MIT",
   "dependencies": {
