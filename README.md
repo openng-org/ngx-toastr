@@ -26,7 +26,6 @@ DEMO: <https://ngx-toastr.vercel.app>
 - No use of `@angular/animations`
 - AoT compilation and lazy loading compatible
 - Component inheritance for custom toasts
-- SystemJS/UMD rollup bundle
 - Output toasts to an optional target directive
 
 ## Dependencies
@@ -50,7 +49,7 @@ npm install @openng/ngx-toastr --save
 **step 1:** add css
 
 - copy
-  [toast css](/projects/ngx-toastr/src/lib/toastr.css)
+  [toast css](projects/ngx-toastr/src/lib/toastr.css)
   to your project.
 - If you are using sass you can import the css.
 
