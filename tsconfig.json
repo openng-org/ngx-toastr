@@ -16,7 +16,7 @@
     "module": "preserve",
     "moduleResolution": "bundler",
     "paths": {
-      "ngx-toastr": [
+      "@openng/ngx-toastr": [
         "./projects/ngx-toastr/src/public-api.ts"
       ]
     },

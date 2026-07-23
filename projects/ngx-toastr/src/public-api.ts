@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ngx-toastr
+ * Public API Surface of @openng/ngx-toastr
  */
 
 export * from './lib';

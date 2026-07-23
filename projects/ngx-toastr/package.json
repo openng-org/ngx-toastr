@@ -1,6 +1,6 @@
 {
-  "name": "ngx-toastr",
-  "version": "0.0.1",
+  "name": "@openng/ngx-toastr",
+  "version": "0.0.0-development",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^21.0.0",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scttcper/ngx-toastr"
+    "url": "https://github.com/openng-org/ngx-toastr"
   },
   "exports": {
     "./toastr": {
