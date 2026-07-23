@@ -1,19 +1,23 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/scttcper/ngx-toastr/master/misc/documentation-assets/ngx-toastr-example.png" width="300" alt="Angular Toastr">
+  <img src="https://raw.githubusercontent.com/openng-org/ngx-toastr/master/misc/documentation-assets/ngx-toastr-example.png" width="300" alt="Angular Toastr">
   <br>
-  <h1>ngx-toastr</h1>
+  <h1>@openng/ngx-toastr</h1>
   <br>
-  <a href="https://www.npmjs.org/package/ngx-toastr">
-    <img src="https://badge.fury.io/js/ngx-toastr.svg" alt="npm">
+  <a href="https://www.npmjs.com/package/@openng/ngx-toastr">
+    <img src="https://badge.fury.io/js/%40openng%2Fngx-toastr.svg" alt="npm">
   </a>
-  <a href="https://codecov.io/github/scttcper/ngx-toastr">
-    <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-toastr.svg" alt="codecov">
+  <a href="https://codecov.io/github/openng-org/ngx-toastr">
+    <img src="https://img.shields.io/codecov/c/github/openng-org/ngx-toastr.svg" alt="codecov">
   </a>
   <br>
   <br>
 </div>
 
-DEMO: https://ngx-toastr.vercel.app
+DEMO: <https://ngx-toastr.vercel.app>
+
+> [!NOTE]
+> `@openng/ngx-toastr` is an OpenNG-maintained fork of the original
+> [`ngx-toastr`](https://github.com/scttcper/ngx-toastr) project.
 
 ## Features
 
@@ -27,22 +31,18 @@ DEMO: https://ngx-toastr.vercel.app
 
 ## Dependencies
 
-Latest version available for each version of Angular
+Latest version available for each version of Angular:
 
-| ngx-toastr      | Angular         |
-| --------------- | --------------- |
-| 13.2.1          | 10.x 11.x       |
-| 14.3.0          | 12.x 13.x       |
-| 15.2.2          | 14.x.           |
-| 16.2.0          | 15.x            |
-| 17.0.2          | 16.x            |
-| 18.x 19x        | >= 17.x < 23.x  |
-| current         | >= 20.x         |
+| `@openng/ngx-toastr` | Angular |
+|----------------------|---------|
+| 1.x                  | 21.x    |
+
+(For older versions, see the original `ngx-toastr`.)
 
 ## Install
 
 ```bash
-npm install ngx-toastr --save
+npm install @openng/ngx-toastr --save
 ```
 
 ## Setup
@@ -50,27 +50,27 @@ npm install ngx-toastr --save
 **step 1:** add css
 
 - copy
-  [toast css](/src/lib/toastr.css)
+  [toast css](/projects/ngx-toastr/src/lib/toastr.css)
   to your project.
 - If you are using sass you can import the css.
 
 ```scss
 // regular style toast
-@import 'ngx-toastr/toastr';
+@import '@openng/ngx-toastr/toastr';
 
 // bootstrap style toast
 // or import a bootstrap 4 alert styled design (SASS ONLY)
 // should be after your bootstrap imports, it uses bs4 variables, mixins, functions
-@import 'ngx-toastr/toastr-bs4-alert';
+@import '@openng/ngx-toastr/toastr-bs4-alert';
 
 // if you'd like to use it without importing all of bootstrap it requires
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 // bootstrap 4
-@import 'ngx-toastr/toastr-bs4-alert';
+@import '@openng/ngx-toastr/toastr-bs4-alert';
 // boostrap 5
-@import 'ngx-toastr/toastr-bs5-alert';
+@import '@openng/ngx-toastr/toastr-bs5-alert';
 ```
 
 - If you are using angular-cli you can add it to your angular.json
@@ -78,7 +78,7 @@ npm install ngx-toastr --save
 ```ts
 "styles": [
   "styles.scss",
-  "node_modules/ngx-toastr/toastr.css" // try adding '../' if you're using angular cli before 6
+  "node_modules/@openng/ngx-toastr/toastr.css"
 ]
 ```
 
@@ -87,7 +87,7 @@ npm install ngx-toastr --save
 - Module based
 
 ```typescript
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 @NgModule({
   imports: [
@@ -103,7 +103,7 @@ class MainModule {}
 
 ```typescript
 import { AppComponent } from './src/app.component';
-import { provideToastr } from 'ngx-toastr';
+import { provideToastr } from '@openng/ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -115,7 +115,7 @@ bootstrapApplication(AppComponent, {
 ## Use
 
 ```typescript
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@openng/ngx-toastr';
 import { inject } from '@angular/core';
 
 @Component({...})
@@ -136,7 +136,7 @@ There are **individual options** and **global options**.
 
 Passed to `ToastrService.success/error/warning/info/show()`
 
-| Option            | Type                           | Default                        | Description                                                                             
+| Option            | Type                           | Default                        | Description                                       |
 | ----------------- | ------------------------------ | ------------------------------ | ------------------------------------------------- |
 | toastComponent    | Component                      | Toast                          | Angular component that will be used               |
 | closeButton       | boolean                        | false                          | Show close button                                 |
@@ -173,7 +173,7 @@ All [individual options](#individual-options) can be overridden in the global
 options to affect all toasts. In addition, global options include the following
 options:
 
-| Option                  | Type    | Default                            | Description                                                                                                   |
+| Option                  | Type    | Default                            | Description                                                        |
 | ----------------------- | ------- | ---------------------------------- | ------------------------------------------------------------------ |
 | maxOpened               | number  | 0                                  | Max toasts opened. Toasts will be queued. 0 is unlimited           |
 | autoDismiss             | boolean | false                              | Dismiss current toast when max is reached                          |
@@ -215,7 +215,7 @@ imports: [
 
 ```typescript
 import { AppComponent } from './src/app.component';
-import { provideToastr } from 'ngx-toastr';
+import { provideToastr } from '@openng/ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -228,8 +228,7 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
-
-### Toastr Service methods return:
+### Toastr Service methods return
 
 ```typescript
 export interface ActiveToast {
@@ -264,7 +263,7 @@ the container it is announced by screen readers.
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { ToastrModule, ToastContainerDirective } from 'ngx-toastr';
+import { ToastrModule, ToastContainerDirective } from '@openng/ngx-toastr';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -283,7 +282,7 @@ Add a div with `toastContainer` directive on it.
 
 ```typescript
 import { Component, OnInit, viewChild, inject } from '@angular/core';
-import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { ToastContainerDirective, ToastrService } from '@openng/ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -319,34 +318,20 @@ toastrService.clear(toastId?: number);
 
 Remove and destroy a single toast by id
 
-```
+```ts
 toastrService.remove(toastId: number);
-```
-
-## SystemJS
-
-If you are using SystemJS, you should also adjust your configuration to point to
-the UMD bundle.
-
-In your SystemJS config file, `map` needs to tell the System loader where to
-look for `ngx-toastr`:
-
-```js
-map: {
-  'ngx-toastr': 'node_modules/ngx-toastr/bundles/ngx-toastr.umd.min.js',
-}
 ```
 
 ## Setup Without Animations
 
-If you do not want animations you can override the default 
+If you do not want animations you can override the default
 toast component in the global config to use
 `ToastNoAnimation` instead of the default one.
 
 In your main module (ex: `app.module.ts`)
 
 ```typescript
-import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from '@openng/ngx-toastr';
 
 @NgModule({
   imports: [
@@ -363,10 +348,10 @@ That's it! No animations.
 ## Using A Custom Toast
 
 Create your toast component extending Toast see the demo's pink toast for an example
-https://github.com/scttcper/ngx-toastr/blob/master/src/app/pink.toast.ts
+<https://github.com/openng-org/ngx-toastr/blob/master/src/app/pink-toast/pink-toast.component.ts>
 
 ```typescript
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 @NgModule({
   imports: [
@@ -393,12 +378,13 @@ ngOnInit() {
 ```
 
 2.  Change default icons (check, warning sign, etc)\
-    Overwrite the css background-image: https://github.com/scttcper/ngx-toastr/blob/master/src/lib/toastr.css.
+    Overwrite the css background-image: <https://github.com/openng-org/ngx-toastr/blob/master/projects/ngx-toastr/src/lib/toastr.css>.
 3.  How do I use this in an ErrorHandler?\
-    See: https://github.com/scttcper/ngx-toastr/issues/179.
+    See: <https://github.com/scttcper/ngx-toastr/issues/179>.
 4.  How can I translate messages?\
-    See: https://github.com/scttcper/ngx-toastr/issues/201.
+    See: <https://github.com/scttcper/ngx-toastr/issues/201>.
 5.  How to handle toastr click/tap action?
+
     ```ts
     showToaster() {
       this.toastr.success('Hello world!', 'Toastr fun!')
@@ -411,12 +397,15 @@ ngOnInit() {
       console.log('Toastr clicked');
     }
     ```
+
 6. How to customize styling without overridding defaults?\
     Add multiple CSS classes separated by a space:
+
     ```ts
     toastClass: 'yourclass ngx-toastr'
     ```
-    See: https://github.com/scttcper/ngx-toastr/issues/594.
+
+    See: <https://github.com/scttcper/ngx-toastr/issues/594>.
 
 ## Previous Works
 
@@ -430,5 +419,7 @@ MIT
 
 ---
 
-> GitHub [@scttcper](https://github.com/scttcper) &nbsp;&middot;&nbsp;
-> Twitter [@scttcper](https://twitter.com/scttcper)
+Maintained by [OpenNG](https://www.openng.org/).
+
+Originally created by GitHub [@scttcper](https://github.com/scttcper) &nbsp;&middot;&nbsp;
+Twitter [@scttcper](https://twitter.com/scttcper)

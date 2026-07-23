@@ -6,9 +6,9 @@ import { Component, VERSION } from '@angular/core';
     <footer class="footer mb-4 mt-5">
       Angular {{ version }}
       <br />
-      <a href="https://github.com/scttcper/ngx-toastr/blob/master/LICENSE">MIT license</a>
+      <a href="https://github.com/openng-org/ngx-toastr/blob/master/LICENSE">MIT license</a>
       -
-      <a href="https://github.com/scttcper/ngx-toastr">Source</a>
+      <a href="https://github.com/openng-org/ngx-toastr">Source</a>
     </footer>
   `,
   styles: [
