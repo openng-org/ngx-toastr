@@ -49,7 +49,7 @@ npm install @openng/ngx-toastr --save
 **step 1:** add css
 
 - copy
-  [toast css](projects/ngx-toastr/src/lib/toastr.css)
+  [toast css](https://github.com/openng-org/ngx-toastr/blob/master/projects/ngx-toastr/src/lib/toastr.css)
   to your project.
 - If you are using sass you can import the css.
 
