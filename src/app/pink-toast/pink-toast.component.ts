@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Toast } from '@openng/ngx-toastr';
 
 @Component({
@@ -12,11 +12,11 @@ import { Toast } from '@openng/ngx-toastr';
 })
 export class PinkToast extends Toast {
   // used for demo purposes
-  undoString = 'undo';
+  readonly undoString = signal('undo');
 
   action(event: Event) {
     event.stopPropagation();
-    this.undoString = 'undid';
+    this.undoString.set('undid');
     this.toastPackage.triggerAction();
     return false;
   }
