@@ -8,10 +8,10 @@
   "newProjectRoot": "projects",
   "schematics": {
     "@schematics/angular:application": {
-      "testRunner": "karma"
+      "testRunner": "vitest"
     },
     "@schematics/angular:library": {
-      "testRunner": "karma"
+      "testRunner": "vitest"
     }
   },
   "projects": {
@@ -79,10 +79,10 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runner": "karma",
-            "runnerConfig": true,
+            "runner": "vitest",
             "coverage": true,
-            "coverageExclude": ["src/app/*-toast/**"]
+            "coverageExclude": ["src/app/*-toast/**"],
+            "coverageReporters": ["html", "text-summary", "lcovonly"]
           }
         },
         "lint": {
