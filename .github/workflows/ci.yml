@@ -3,16 +3,14 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/actions/checkout
       - uses: actions/checkout@v6
-      # https://github.com/actions/setup-node
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -23,7 +21,7 @@ jobs:
       - run: npm run build
       - name: test
         run: npm run test:ci
-      # https://github.com/codecov/codecov-action
+
       - name: coverage
         uses: codecov/codecov-action@v5
         with:

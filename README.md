@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/openng-org/ngx-toastr/master/misc/documentation-assets/ngx-toastr-example.png" width="300" alt="Angular Toastr">
+  <img src="https://raw.githubusercontent.com/openng-org/ngx-toastr/main/misc/documentation-assets/ngx-toastr-example.png" width="300" alt="Angular Toastr">
   <br>
   <h1>@openng/ngx-toastr</h1>
   <br>
@@ -49,7 +49,7 @@ npm install @openng/ngx-toastr --save
 **step 1:** add css
 
 - copy
-  [toast css](https://github.com/openng-org/ngx-toastr/blob/master/projects/ngx-toastr/src/lib/toastr.css)
+  [toast css](https://github.com/openng-org/ngx-toastr/blob/main/projects/ngx-toastr/src/lib/toastr.css)
   to your project.
 - If you are using sass you can import the css.
 
@@ -347,7 +347,7 @@ That's it! No animations.
 ## Using A Custom Toast
 
 Create your toast component extending Toast see the demo's pink toast for an example
-<https://github.com/openng-org/ngx-toastr/blob/master/src/app/pink-toast/pink-toast.component.ts>
+<https://github.com/openng-org/ngx-toastr/blob/main/src/app/pink-toast/pink-toast.component.ts>
 
 ```typescript
 import { ToastrModule } from '@openng/ngx-toastr';
@@ -377,7 +377,7 @@ ngOnInit() {
 ```
 
 2.  Change default icons (check, warning sign, etc)\
-    Overwrite the css background-image: <https://github.com/openng-org/ngx-toastr/blob/master/projects/ngx-toastr/src/lib/toastr.css>.
+    Overwrite the css background-image: <https://github.com/openng-org/ngx-toastr/blob/main/projects/ngx-toastr/src/lib/toastr.css>.
 3.  How do I use this in an ErrorHandler?\
     See: <https://github.com/scttcper/ngx-toastr/issues/179>.
 4.  How can I translate messages?\
