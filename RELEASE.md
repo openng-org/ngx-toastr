@@ -24,12 +24,6 @@ Release Please derives the next version from commits that change `projects/ngx-t
 For squash merges, make the pull request title a Conventional Commit.
 Add a `BREAKING CHANGE:` footer when a breaking change needs more detail.
 
-## Recovery
-
-Rerun a failed Publish workflow after correcting its configuration.
-The workflow exits successfully if that version is already on npm.
-Never reuse a published npm version; merge a fix and release a new patch instead.
-
 ## Initial Setup
 
 ### GitHub App
