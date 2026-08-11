@@ -38,5 +38,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # temporary only for first publish
         run: |
-          npm publish --access public
+          npm publish --access public --provenance
         working-directory: dist/ngx-toastr

@@ -55,4 +55,4 @@ Use a token once to publish the first version:
 7. Require two-factor authentication and disallow token-based publishing in the npm package settings.
 
 Later releases use npm's short-lived OIDC credentials.
-When `NPM_TOKEN` is absent, npm uses OIDC.
+The token, `--access public`, and `--provenance` may be removed from `publish.yml`.
