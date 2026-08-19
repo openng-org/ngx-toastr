@@ -7,7 +7,7 @@ This project uses **Release Please**.
 1. Merge changes into `main` using Conventional Commit titles.
 2. Release Please creates or updates a release pull request.
 3. Review the proposed version and changelog, wait for CI, and merge the pull request.
-4. Release Please creates a `vX.Y.Z` tag and GitHub release.
+4. Release Please creates a `X.Y.Z` tag and GitHub release.
 5. The Publish workflow publishes `@openng/ngx-toastr` to npm.
 
 ## Versioning
