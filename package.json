@@ -38,6 +38,8 @@
     "@angular/build": "^21.1.0",
     "@angular/cli": "^21.1.0",
     "@angular/compiler-cli": "^21.1.0",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
     "@types/jasmine": "~5.1.15",
     "@types/lodash-es": "^4.17.12",
     "angular-eslint": "21.1.0",
