@@ -30,3 +30,23 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test:ci
+
+  commitlint:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # Fetch commits and trees without file contents.
+          fetch-depth: 0
+          filter: blob:none
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+
+      - run: npm ci
+      - name: Lint commit messages
+        run: |
+          npx --no-install commitlint --verbose --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
