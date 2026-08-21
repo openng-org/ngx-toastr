@@ -6,9 +6,6 @@
   <a href="https://www.npmjs.com/package/@openng/ngx-toastr">
     <img src="https://badge.fury.io/js/%40openng%2Fngx-toastr.svg" alt="npm">
   </a>
-  <a href="https://codecov.io/github/openng-org/ngx-toastr">
-    <img src="https://img.shields.io/codecov/c/github/openng-org/ngx-toastr.svg" alt="codecov">
-  </a>
   <br>
   <br>
 </div>
