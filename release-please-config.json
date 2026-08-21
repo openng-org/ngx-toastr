@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "346ab91405fc82fb64b3a22d0a0f3523b2ff2dae",
+  "packages": {
+    "projects/ngx-toastr": {
+      "release-type": "node",
+      "changelog-path": "/CHANGELOG.md",
+      "include-component-in-tag": false,
+      "include-v-in-tag": false
+    }
+  }
+}
