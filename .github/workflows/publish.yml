@@ -35,11 +35,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Publish with Provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # temporary only for first publish
+      - name: Trusted Publish with Provenance
         run: |
-          npm publish --access public --provenance
+          npm publish
         working-directory: dist/ngx-toastr
 
       - name: Update Release PR Label
