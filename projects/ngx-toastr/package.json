@@ -1,6 +1,6 @@
 {
   "name": "@openng/ngx-toastr",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^21.0.0",
