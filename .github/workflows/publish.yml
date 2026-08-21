@@ -18,7 +18,6 @@ jobs:
     permissions:
       contents: read
       id-token: write # for OIDC
-      pull-requests: write # for labelling PRs
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -35,13 +34,18 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Publish with Provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # temporary only for first publish
+      - name: Trusted Publish with Provenance
         run: |
-          npm publish --access public --provenance
+          npm publish
         working-directory: dist/ngx-toastr
 
+  update-release-pr:
+    name: Update Release PR
+    needs: publish
+    runs-on: ubuntu-slim
+    permissions:
+      pull-requests: write # for labeling/commenting PRs
+    steps:
       - name: Update Release PR Label
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
