@@ -14,12 +14,12 @@ This project uses **Release Please**.
 
 Release Please derives the next version from commits that change `projects/ngx-toastr`:
 
-| Commit title                                | Version change |
-| ------------------------------------------- | -------------- |
-| `fix: correct timeout handling`             | Patch          |
-| `feat: add a toast option`                  | Minor          |
-| `feat!: change the public API`              | Major          |
-| `docs:`, `test:`, `build:`, `ci:`, `chore:` | None           |
+| Commit title                                      | Version change |
+| ------------------------------------------------- | -------------- |
+| `fix: correct timeout handling`                   | Patch          |
+| `feat: add a toast option`                        | Minor          |
+| `feat!: change the public API`                    | Major          |
+| `docs:`, `test:`, `style:`, `refactor:`, `chore:` | None           |
 
 For squash merges, make the pull request title a Conventional Commit.
 Add a `BREAKING CHANGE:` footer when a breaking change needs more detail.
