@@ -29,9 +29,9 @@ DEMO: <https://ngx-toastr.vercel.app>
 
 Latest version available for each version of Angular:
 
-| `@openng/ngx-toastr` | Angular |
-|----------------------|---------|
-| 1.x                  | 21.x    |
+| `@openng/ngx-toastr` | Angular          |
+| -------------------- | ---------------- |
+| 1.x                  | 20.x, 21.x, 22.x |
 
 (For older versions, see the original `ngx-toastr`.)
 
