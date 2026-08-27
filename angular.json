@@ -32,6 +32,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "polyfills": ["zone.js"],
             "assets": [
               {
                 "glob": "**/*",
@@ -79,10 +80,12 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
+            "buildTarget": "ngx-toastr-site:build:development",
+            "tsConfig": "tsconfig.spec.json",
             "runner": "vitest",
-            "coverage": true,
-            "coverageExclude": ["src/app/*-toast/**"],
-            "coverageReporters": ["html", "text-summary", "lcovonly"]
+            "codeCoverage": true,
+            "codeCoverageExclude": ["src/app/*-toast/**"],
+            "codeCoverageReporters": ["html", "text-summary", "lcovonly"]
           }
         },
         "lint": {
