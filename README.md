@@ -10,7 +10,7 @@
   <br>
 </div>
 
-DEMO: <https://ngx-toastr.vercel.app>
+DEMO: <https://openng-org.github.io/ngx-toastr/>
 
 > [!NOTE]
 > `@openng/ngx-toastr` is an OpenNG-maintained fork of the original
