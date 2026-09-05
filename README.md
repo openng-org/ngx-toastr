@@ -150,7 +150,7 @@ Passed to `ToastrService.success/error/warning/info/show()`
 | titleClass        | string                         | 'toast-title'                  | CSS class(es) for inside toast on title           |
 | messageClass      | string                         | 'toast-message'                | CSS class(es) for inside toast on message         |
 | tapToDismiss      | boolean                        | true                           | Close on click                                    |
-| onActivateTick    | boolean                        | false                          | Fires `changeDetectorRef.detectChanges()` when activated. Helps show toast from asynchronous events outside of Angular's change detection |
+| onActivateTick    | boolean                        | false                          | Runs toast creation inside `NgZone.run()`. Helps show toast from asynchronous events outside of Angular's change detection. Has no effect in zoneless applications. |
 
 #### Setting Individual Options
 
