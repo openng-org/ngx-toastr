@@ -125,6 +125,31 @@ describe('Toasts', () => {
     expect(opened.toastRef.componentInstance).toBeDefined();
   });
 
+  it('should prevent and count duplicates', () => {
+    toastrService.toastrConfig.preventDuplicates = true;
+    toastrService.toastrConfig.countDuplicates = true;
+
+    const quote = { title: 'Duplicate title', message: 'Duplicate message' };
+    const opened1 = toastManager.openToastNoAnimation(
+      undefined,
+      undefined,
+      quote,
+    ) as ActiveToast<ToastNoAnimation>;
+    const opened2 = toastManager.openToastNoAnimation(undefined, undefined, quote);
+
+    expect(opened2).toBe(opened1);
+    expect(opened1.portal.instance.duplicatesCount).toBe(1);
+
+    const opened3 = toastManager.openToastNoAnimation(undefined, undefined, quote);
+
+    expect(opened3).toBe(opened1);
+    expect(opened1.portal.instance.duplicatesCount).toBe(2);
+    expect(toastrService.currentlyActive).toBe(1);
+
+    toastrService.toastrConfig.preventDuplicates = false;
+    toastrService.toastrConfig.countDuplicates = false;
+  });
+
   it('should close all toasts', () => {
     vi.useFakeTimers();
 
