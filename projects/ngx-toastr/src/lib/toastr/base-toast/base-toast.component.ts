@@ -1,6 +1,7 @@
 import {
   ApplicationRef,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   computed,
   inject,
@@ -31,7 +32,9 @@ export class ToastBase<ConfigPayload = unknown> implements OnDestroy {
   protected toastrService = inject(ToastrService);
   protected appRef = inject(ApplicationRef);
   protected timeoutsService = inject(TimeoutsService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
+  /** @deprecated This will become a signal the next major release. */
   duplicatesCount!: number;
   protected hideTime!: number;
 
@@ -70,6 +73,7 @@ export class ToastBase<ConfigPayload = unknown> implements OnDestroy {
       .countDuplicate()
       .subscribe(count => {
         this.duplicatesCount = count;
+        this.cdr.markForCheck();
       });
   }
 
