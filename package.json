@@ -10,6 +10,7 @@
     "test": "ng test --watch=false",
     "test:watch": "ng test --watch",
     "test:ci": "ng test --watch=false",
+    "test:debug": "ng test --watch=false --debug --code-coverage=false",
     "test:peer": "node scripts/test-peer-compatibility.mjs",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix"
