@@ -46,7 +46,7 @@
     "@vitest/eslint-plugin": "^1.6.27",
     "angular-eslint": "20.7.0",
     "cpy-cli": "^6.0.0",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-rxjs-x": "^0.9.6",
