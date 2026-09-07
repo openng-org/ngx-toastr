@@ -1,15 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  Toast,
-  ActiveToast,
-  ToastrModule,
-  type ToastNoAnimation,
-  ToastrService,
-} from '@openng/ngx-toastr';
-import { NotyfToast } from './notyf-toast/notyf-toast.component';
-import { PinkToast } from './pink-toast/pink-toast.component';
+import { ToastrModule, ToastrService } from '@openng/ngx-toastr';
 import { firstValueFrom } from 'rxjs';
-import type { BootstrapToast } from './bootstrap-toast/bootstrap-toast.component';
 import { ToastManagerService } from './toast-manager.service';
 
 describe('Toasts', () => {
@@ -34,94 +25,107 @@ describe('Toasts', () => {
   });
 
   it('should trigger onShown', async () => {
-    const opened = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
 
     expect(opened).toBeDefined();
+
     await firstValueFrom(opened.onShown);
   });
 
   it('should trigger onHidden', async () => {
-    const opened = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
 
     expect(opened.portal).toBeDefined();
+
     await firstValueFrom(opened.onHidden);
   });
 
   it('should trigger onTap', async () => {
-    const opened: ActiveToast<Toast> = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
 
     expect(opened.portal).toBeDefined();
+
     const onTap = firstValueFrom(opened.onTap);
     opened.portal.instance.tapToast();
     await onTap;
   });
 
   it('should extend life on mouseover and exit', () => {
-    const opened = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
 
     opened.portal.instance.stickAround();
     opened.portal.instance.delayedHideToast();
+
     expect(opened.portal.instance.options().timeOut).toBe(1000);
   });
 
   it('should keep on mouse exit with extended timeout 0', () => {
     toastrService.toastrConfig.extendedTimeOut = 0;
-    const opened = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
 
     opened.portal.instance.stickAround();
     opened.portal.instance.delayedHideToast();
+
     expect(opened.portal.instance.options().timeOut).toBe(0);
   });
 
   it('should trigger onShown for openPinkToast', async () => {
-    const opened = toastManager.openPinkToast() as ActiveToast<PinkToast>;
+    const opened = toastManager.openPinkToast();
 
     expect(opened.portal).toBeDefined();
+
     await firstValueFrom(opened.onShown);
   });
 
   it('should trigger onAction for openPinkToast', async () => {
-    const opened = toastManager.openPinkToast() as ActiveToast<PinkToast>;
+    const opened = toastManager.openPinkToast();
 
     expect(opened.portal).toBeDefined();
+
     const onAction = firstValueFrom(opened.onAction);
     opened.portal.instance.action(new Event('click'));
     await onAction;
   });
 
   it('should trigger onHidden for openPinkToast', async () => {
-    const opened = toastManager.openPinkToast() as ActiveToast<PinkToast>;
+    const opened = toastManager.openPinkToast();
 
     expect(opened.portal).toBeDefined();
+
     await firstValueFrom(opened.onHidden);
   });
 
   it('should trigger onShown for openNotyf', async () => {
-    const opened = toastManager.openNotyf() as ActiveToast<NotyfToast>;
+    const opened = toastManager.openNotyf();
 
     expect(opened.portal).toBeDefined();
+
     await firstValueFrom(opened.onShown);
   });
 
   it('should trigger onHidden for openNotyf', async () => {
-    const opened = toastManager.openNotyf() as ActiveToast<NotyfToast>;
+    const opened = toastManager.openNotyf();
 
     expect(opened.portal).toBeDefined();
+
     await firstValueFrom(opened.onHidden);
   });
 
   it('should have defined componentInstance', () => {
-    const opened = toastManager.openToastAnimation() as ActiveToast<Toast>;
+    const opened = toastManager.openToastAnimation();
+
     expect(opened.toastRef.componentInstance).toBeDefined();
   });
 
   it('should have defined componentInstance BootstrapToast', () => {
-    const opened = toastManager.openBootstrapToast() as ActiveToast<BootstrapToast>;
+    const opened = toastManager.openBootstrapToast();
+
     expect(opened.toastRef.componentInstance).toBeDefined();
   });
 
   it('should have defined componentInstance ToastNoAnim', () => {
-    const opened = toastManager.openToastNoAnimation() as ActiveToast<ToastNoAnimation>;
+    const opened = toastManager.openToastNoAnimation();
+
     expect(opened.toastRef.componentInstance).toBeDefined();
   });
 
@@ -136,6 +140,7 @@ describe('Toasts', () => {
 
     toastManager.clearToasts();
     vi.advanceTimersByTime(1);
+
     expect(toastrService.currentlyActive).toBe(0);
 
     vi.useRealTimers();
@@ -144,9 +149,10 @@ describe('Toasts', () => {
   it('Should close last toast', async () => {
     toastManager.openToastNoAnimation();
     const lastToast = toastManager.openToastNoAnimation();
+
     expect(toastrService.currentlyActive).toBe(2);
 
-    const onHidden = firstValueFrom(lastToast!.onHidden);
+    const onHidden = firstValueFrom(lastToast.onHidden);
     toastManager.clearLastToast();
     await onHidden;
   });

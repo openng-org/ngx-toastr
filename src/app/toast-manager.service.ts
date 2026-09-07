@@ -83,7 +83,7 @@ export class ToastManagerService {
     options?: IndividualConfig,
     quote?: Quote,
     type?: string,
-  ): ActiveToast<C> | undefined {
+  ): ActiveToast<C> {
     const { message, title } = this.getMessage(quote);
     const inserted = this.toastr.show<C>(
       message || 'Success',
