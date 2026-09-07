@@ -5,6 +5,7 @@ const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const vitest = require('@vitest/eslint-plugin');
+const rxjsX = require('eslint-plugin-rxjs-x');
 
 module.exports = defineConfig([
   {
@@ -14,6 +15,7 @@ module.exports = defineConfig([
       tseslint.configs.recommendedTypeChecked,
       tseslint.configs.stylistic,
       angular.configs.tsRecommended,
+      rxjsX.configs.strict,
     ],
     processor: angular.processInlineTemplates,
     languageOptions: {
@@ -23,6 +25,9 @@ module.exports = defineConfig([
     },
     rules: {
       '@angular-eslint/component-class-suffix': 'off',
+
+      'rxjs-x/no-ignored-default-value': 'off',
+      'rxjs-x/no-ignored-error': 'off',
     },
   },
   {
