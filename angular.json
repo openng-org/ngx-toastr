@@ -113,6 +113,13 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/ngx-toastr/**/*.ts", "projects/ngx-toastr/**/*.html"],
+            "eslintConfig": "projects/ngx-toastr/eslint.config.js"
+          }
         }
       }
     }
