@@ -27,7 +27,7 @@ import { TimeoutsService } from '../../timeouts.service';
   },
 })
 export class ToastBase<ConfigPayload = unknown> implements OnDestroy {
-  public toastPackage = inject(ToastPackage);
+  public toastPackage = inject<ToastPackage<ConfigPayload>>(ToastPackage);
   protected toastrService = inject(ToastrService);
   protected appRef = inject(ApplicationRef);
   protected timeoutsService = inject(TimeoutsService);
