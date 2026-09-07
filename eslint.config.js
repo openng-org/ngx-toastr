@@ -4,6 +4,7 @@ const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const vitest = require('@vitest/eslint-plugin');
 
 module.exports = defineConfig([
   {
@@ -30,4 +31,21 @@ module.exports = defineConfig([
     rules: {},
   },
   eslintPluginPrettierRecommended,
+  {
+    files: ['**/*.spec.ts'],
+    extends: [vitest.configs.recommended],
+    settings: {
+      vitest: {
+        typecheck: true,
+      },
+    },
+    rules: {
+      '@typescript-eslint/unbound-method': 'off',
+      'vitest/unbound-method': 'error',
+
+      'vitest/require-top-level-describe': 'error',
+
+      'vitest/padding-around-all': 'error',
+    },
+  },
 ]);
