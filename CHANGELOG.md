@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/openng-org/ngx-toastr/compare/1.1.0...1.1.1) (2026-09-09)
+
+
+### Bug Fixes
+
+* trigger change detection on duplicatesCount ([#26](https://github.com/openng-org/ngx-toastr/issues/26)) ([085dbc1](https://github.com/openng-org/ngx-toastr/commit/085dbc1ea1a3d2256c1ecfb17cb95f4056a8d401))
+
 ## [1.1.0](https://github.com/openng-org/ngx-toastr/compare/1.0.0...1.1.0) (2026-08-27)
 
 
