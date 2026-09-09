@@ -135,11 +135,7 @@ describe('Toasts', () => {
     toastrService.toastrConfig.countDuplicates = true;
 
     const quote = { title: 'Duplicate title', message: 'Duplicate message' };
-    const opened1 = toastManager.openToastNoAnimation(
-      undefined,
-      undefined,
-      quote,
-    ) as ActiveToast<ToastNoAnimation>;
+    const opened1 = toastManager.openToastNoAnimation(undefined, undefined, quote);
     const opened2 = toastManager.openToastNoAnimation(undefined, undefined, quote);
 
     expect(opened2).toBe(opened1);
