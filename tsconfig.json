@@ -37,6 +37,9 @@
     },
     {
       "path": "./projects/ngx-toastr/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-toastr/tsconfig.schematics.json"
     }
   ]
 }

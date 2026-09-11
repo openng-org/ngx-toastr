@@ -1,6 +1,9 @@
 {
   "name": "@openng/ngx-toastr",
   "version": "1.1.1",
+  "scripts": {
+    "build:schematics": "tsc -p tsconfig.schematics.json"
+  },
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^20.0.0 || ^21.0.0 || ^22.0.0",
@@ -18,6 +21,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/openng-org/ngx-toastr"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
   },
   "exports": {
     "./toastr": {

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "isolatedModules": false,
+    "module": "commonjs",
+    "moduleResolution": "node10",
+    "noEmitOnError": true,
+    "outDir": "../../dist/ngx-toastr/schematics",
+    "rootDir": "schematics",
+    "sourceMap": true
+  },
+  "include": ["schematics/**/*.ts"],
+  "exclude": ["schematics/**/*.spec.ts"]
+}
