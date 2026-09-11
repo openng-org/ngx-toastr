@@ -37,52 +37,56 @@ Latest version available for each version of Angular:
 
 ## Install
 
-```bash
+For initial setup in a standalone Angular application, use the schematic:
+
+```sh
+ng add @openng/ngx-toastr
+```
+
+This registers `provideToastr()` and adds the default toast CSS to `angular.json`.
+For workspaces with multiple applications, specify `--project <name>`.
+For NgModule applications or other styling, follow the manual setup below.
+
+### Manual Setup
+
+To set up without the schematic, first install the package:
+
+```sh
 npm install @openng/ngx-toastr --save
 ```
 
-## Setup
+or
 
-**step 1:** add css
-
-- copy
-  [toast css](https://github.com/openng-org/ngx-toastr/blob/main/projects/ngx-toastr/src/lib/toastr.css)
-  to your project.
-- If you are using sass you can import the css.
-
-```scss
-// regular style toast
-@import '@openng/ngx-toastr/toastr';
-
-// bootstrap style toast
-// or import a bootstrap 4 alert styled design (SASS ONLY)
-// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
-@import '@openng/ngx-toastr/toastr-bs4-alert';
-
-// if you'd like to use it without importing all of bootstrap it requires
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/mixins';
-// bootstrap 4
-@import '@openng/ngx-toastr/toastr-bs4-alert';
-// boostrap 5
-@import '@openng/ngx-toastr/toastr-bs5-alert';
+```sh
+yarn add @openng/ngx-toastr
 ```
 
-- If you are using angular-cli you can add it to your angular.json
+or
+
+```sh
+pnpm install @openng/ngx-toastr
+```
+
+#### Register the ToastrService
+
+Add `provideToastr` to the standalone providers or `ToastrModule` to the root NgModule.
+
+##### Standalone Provider
 
 ```ts
-"styles": [
-  "styles.scss",
-  "node_modules/@openng/ngx-toastr/toastr.css"
-]
+import { AppComponent } from './src/app.component';
+import { provideToastr } from '@openng/ngx-toastr';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideToastr(), // Toastr providers
+  ]
+});
 ```
 
-**step 2:** add `ToastrModule` to app `NgModule`, or `provideToastr` to providers.
+##### ToastrModule
 
-- Module based
-
-```typescript
+```ts
 import { ToastrModule } from '@openng/ngx-toastr';
 
 @NgModule({
@@ -95,17 +99,65 @@ import { ToastrModule } from '@openng/ngx-toastr';
 class MainModule {}
 ```
 
-- Standalone
+#### Add Styles
 
-```typescript
-import { AppComponent } from './src/app.component';
-import { provideToastr } from '@openng/ngx-toastr';
+For the default toast design, add the packaged CSS to your `angular.json`:
 
-bootstrapApplication(AppComponent, {
+```json
+"styles": [
+  "src/styles.scss",
+  "node_modules/@openng/ngx-toastr/toastr.css"
+]
+```
+
+Alternatively, copy the
+[toast CSS](https://github.com/openng-org/ngx-toastr/blob/main/projects/ngx-toastr/src/lib/toastr.css)
+into your project.
+
+The legacy toast design is also available in `toastr-old.css`.
+
+For the Bootstrap alert design, install Bootstrap 5 and import the SCSS entry point after the Bootstrap functions, variables, and mixins:
+
+```scss
+// If you aren't importing all of bootstrap:
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+// Otherwise:
+@import 'bootstrap/scss/bootstrap';
+
+@import '@openng/ngx-toastr/toastr-bs5-alert';
+```
+
+Bootstrap 4 is also available:
+
+```scss
+@import '@openng/ngx-toastr/toastr-bs4-alert';
+```
+
+Or you can skip those stylesheets and use custom CSS for any other design.
+
+For example, if you have daisyUI installed:
+
+```ts
+import { ApplicationConfig } from '@angular/core';
+import { provideToastr, ToastNoAnimation } from '@openng/ngx-toastr';
+
+export const appConfig: ApplicationConfig = {
   providers: [
-    provideToastr(), // Toastr providers
-  ]
-});
+    provideToastr({
+      toastComponent: ToastNoAnimation,
+      positionClass: 'toast',
+      toastClass: 'alert',
+      iconClasses: {
+        error: 'alert-error',
+        info: 'alert-info',
+        success: 'alert-success',
+        warning: 'alert-warning',
+      },
+    }),
+  ],
+};
 ```
 
 ## Use
