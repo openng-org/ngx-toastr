@@ -1,12 +1,16 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'gh-counter',
   imports: [DecimalPipe],
   template: `
-    <a class="counter" [href]="counterHref" [attr.aria-label]="count + counterLabel + ' on GitHub'">
-      <span>{{ count | number }}</span>
+    <a
+      class="counter"
+      [href]="counterHref()"
+      [attr.aria-label]="count() + counterLabel() + ' on GitHub'"
+    >
+      <span>{{ count() | number }}</span>
     </a>
   `,
   styles: [
@@ -54,7 +58,7 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class GhCounterComponent {
-  @Input() count!: number;
-  @Input() counterLabel!: string;
-  @Input() counterHref!: string;
+  readonly count = input.required<number>();
+  readonly counterLabel = input.required<string>();
+  readonly counterHref = input.required<string>();
 }

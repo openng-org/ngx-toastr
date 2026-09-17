@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { getRepo, getUser } from './gh-buttons-util';
+import { Component, computed, input } from '@angular/core';
 import { GhCounterComponent } from './gh-counter.component';
+import { httpResource } from '@angular/common/http';
 
 @Component({
   selector: 'gh-button',
@@ -8,10 +8,10 @@ import { GhCounterComponent } from './gh-counter.component';
   template: `
     <div class="gh-wrapper">
       <a
-        [href]="buttonHref"
+        [href]="buttonHref()"
         class="gh-btn"
-        [attr.aria-label]="text + ' on GitHub'"
-        [target]="target"
+        [attr.aria-label]="'Star on GitHub'"
+        [target]="'_self'"
       >
         <svg
           version="1.1"
@@ -26,13 +26,13 @@ import { GhCounterComponent } from './gh-counter.component';
             d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
           ></path>
         </svg>
-        <span> {{ text }}</span>
+        <span> Star</span>
       </a>
-      @if (count && counter !== undefined) {
+      @if (count(); as count) {
         <gh-counter
-          [count]="counter"
-          [counterLabel]="counterLabel"
-          [counterHref]="counterHref"
+          [count]="count"
+          [counterLabel]="' stargazers'"
+          [counterHref]="counterHref()"
         ></gh-counter>
       }
     </div>
@@ -118,54 +118,25 @@ import { GhCounterComponent } from './gh-counter.component';
     `,
   ],
 })
-export class GhButtonComponent implements OnChanges {
+export class GhButtonComponent {
   /** GitHub username that owns the repo */
-  @Input() user!: string;
+  readonly user = input.required<string>();
   /** GitHub repository to pull the forks and watchers counts */
-  @Input() repo!: string;
-  /** Type of button to show */
-  @Input() type: 'follow' | 'watch' | 'star' | 'fork' | 'issue' | 'download' = 'star';
-  /** Show the optional watchers or forks count */
-  @Input() count = false;
-  /** Use the github logo as the icon */
-  @Input() standardIcon = false;
-  /** Specifies where to open the linked github URL. */
-  @Input() target:
-    | '_blank' // Opens the linked document in a new window or tab
-    | '_self' // Opens the linked document in the same frame as it was clicked (this is default)
-    | '_parent' // Opens the linked document in the parent frame
-    | '_top' = '_self'; // Opens the linked document in the full body of the window
-  text = '';
-  buttonHref = '';
-  counterHref = '';
-  counter?: number;
-  counterLabel = '';
-  countAttr = '';
+  readonly repo = input.required<string>();
 
-  ngOnChanges() {
-    this.text = 'Star';
-    this.countAttr = 'stargazers_count';
-    this.counterLabel = ' stargazers';
-    this.buttonHref = 'https://github.com/' + this.user + '/' + this.repo;
-    this.counterHref = 'https://github.com/' + this.user + '/' + this.repo + '/stargazers';
+  protected readonly buttonHref = computed(
+    () => `https://github.com/${this.user()}/${this.repo()}`,
+  );
+  protected readonly counterHref = computed(
+    () => `https://github.com/${this.user()}/${this.repo()}/stargazers`,
+  );
 
-    if (this.count && this.user && this.type !== 'download') {
-      this.fetch();
-    }
-  }
-  fetch() {
-    let sub: Promise<any>;
-    if (this.type === 'follow') {
-      sub = getUser(this.user);
-    } else {
-      if (!this.repo) {
-        return;
-      }
-      sub = getRepo(this.user, this.repo);
-    }
-    sub.then(d => this.callback(d));
-  }
-  callback(data: any) {
-    this.counter = data[this.countAttr ?? ''];
-  }
+  private readonly repoResource = httpResource<Record<string, unknown>>(
+    () => `https://api.github.com/repos/${this.user()}/${this.repo()}`,
+  );
+  protected readonly count = computed(() =>
+    this.repoResource.hasValue()
+      ? (this.repoResource.value()?.['stargazers_count'] as number | undefined)
+      : undefined,
+  );
 }
