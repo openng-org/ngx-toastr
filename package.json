@@ -52,7 +52,7 @@
     "eslint-plugin-rxjs-x": "^0.9.6",
     "jsdom": "^30.1.0",
     "ng-packagr": "^20.3.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "typescript": "~5.9.3",
     "typescript-eslint": "8.69.0",
     "vitest": "^3.2.4"
