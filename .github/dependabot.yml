@@ -6,7 +6,57 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
+    commit-message:
+      prefix: chore
+      include: scope
     groups:
       codeql:
         patterns:
           - "github/codeql-action/*"
+
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore
+      include: scope
+    versioning-strategy: increase
+    allow:
+      - update-types:
+        - version-update:semver-patch
+        - version-update:semver-minor
+    ignore:
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-major
+    groups:
+      angular:
+        patterns:
+          - "@angular/*"
+          - ng-packagr
+          - angular-eslint
+      linting:
+        patterns:
+          - "*eslint*"
+          - "*prettier*"
+          - globals
+      testing:
+        patterns:
+          - vitest
+          - "@vitest/*"
+          - jsdom
+      lodash:
+        patterns:
+          - lodash-es
+          - "@types/lodash-es"
+      commitlint:
+        patterns:
+          - "@commitlint/*"
+      dev-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
