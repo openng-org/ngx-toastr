@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GhButtonModule } from '@ctrl/ngx-github-buttons';
+import { GhButtonComponent } from '../gh/gh.component';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,9 @@ import { GhButtonModule } from '@ctrl/ngx-github-buttons';
     <header class="header mt-5 text-center">
       <h1>@openng/ngx-toastr</h1>
       <p style="color: #777" class="mb-1">Easy Toasts for Angular</p>
-      <gh-button user="openng-org" repo="ngx-toastr" [count]="true"></gh-button>
+      <gh-button user="openng-org" repo="ngx-toastr"></gh-button>
     </header>
   `,
-  imports: [GhButtonModule],
+  imports: [GhButtonComponent],
 })
 export class HeaderComponent {}

@@ -29,7 +29,6 @@
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
-    "@ctrl/ngx-github-buttons": "^9.0.0",
     "bootstrap": "^5.3.8",
     "lodash-es": "^4.17.22",
     "rxjs": "~7.8.2",
